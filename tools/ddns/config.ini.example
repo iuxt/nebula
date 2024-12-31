@@ -1,0 +1,13 @@
+[main]
+cloud_api = namesilo
+
+[dnspod]
+id = 12345
+key = xxxxxxxxxxxxxxxxx
+domain = baidu.com
+sub_domain = ditu
+
+[namesilo]
+key = 12345
+domain = baidu.com
+sub_domain = ds.babudiu.com

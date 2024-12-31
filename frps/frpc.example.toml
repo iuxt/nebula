@@ -1,0 +1,45 @@
+user = "一般设置为设备名"
+serverAddr = "服务器地址"
+serverPort = 7000
+loginFailExit = false
+log.to = "console"
+log.level = "info"
+log.maxDays = 3
+log.disablePrintColor = false
+auth.method = "token"
+auth.token = "secret_token"
+webServer.addr = "127.0.0.1"
+webServer.port = 7400
+webServer.user = "admin"
+webServer.password = "admin"
+webServer.pprofEnable = false
+transport.poolCount = 5
+transport.protocol = "tcp"
+transport.connectServerLocalIP = "0.0.0.0"
+transport.tls.enable = true
+udpPacketSize = 1500
+
+[[proxies]]
+name = "rdp"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 3389
+transport.useEncryption = false
+transport.useCompression = false
+remotePort = 7776
+loadBalancer.group = "test_group"
+loadBalancer.groupKey = "123456"
+healthCheck.type = "tcp"
+healthCheck.timeoutSeconds = 3
+healthCheck.maxFailed = 3
+healthCheck.intervalSeconds = 10
+
+
+[[proxies]]
+name = "p2p_tcp"
+type = "xtcp"
+secretKey = "com.012"
+localIP = "127.0.0.1"
+localPort = 3389
+allowUsers = ["legion", "mac-mini"]
+

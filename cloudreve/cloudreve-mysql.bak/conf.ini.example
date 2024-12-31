@@ -1,0 +1,17 @@
+[Database]
+; 数据库类型，目前支持 sqlite/mysql/mssql/postgres
+Type = mysql
+; MySQL 端口
+Port = 3306
+; 用户名
+User = root
+; 密码
+Password = password
+; 数据库地址
+Host = mysql
+; 数据库名称
+Name = cloudreve
+; 数据表前缀
+TablePrefix = cd
+; 字符集
+Charset = utf8mb4

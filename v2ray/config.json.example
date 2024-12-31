@@ -1,0 +1,52 @@
+{
+  "inbounds": [
+    {
+      "port": 2333,
+      "protocol": "vmess",
+      "tag": "main-inbound",
+      "settings": {
+        "clients": [
+          {
+            "id": "855f8cfd-885f-42e6-9bad-c4857f4b11ec",
+            "alterId": 8
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+        "path": "/etc/nginx/nginx.conf"
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {},
+      "tag": "direct"
+    }
+  ],
+  "routing": {
+    "domainStrategy": "AsIs",
+    "domainMatcher": "mph",
+    "rules": [
+      {
+        "type": "field",
+        "domain": ["*"],
+        "outboundTag": "direct",
+        "inboundTag": [
+            "main-inbound"
+        ]
+      }
+    ]
+  },
+  "dns": {
+    "servers": [
+      "8.8.8.8",
+      "8.8.4.4",
+      "1.1.1.1"
+    ]
+  }
+}
+
