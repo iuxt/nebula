@@ -1,0 +1,7 @@
+.env
+__pycache__
+venv/
+config.ini
+.DS_Store
+custom_nginx.conf
+
