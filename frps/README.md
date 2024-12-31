@@ -81,9 +81,9 @@ openssl req -new -sha256 -key server.key \
     -out server.csr
 
 openssl x509 -req -days 365 -sha256 \
-	-in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial \
-	-extfile <(printf "subjectAltName=DNS:localhost,IP:127.0.0.1,DNS:example.server.com") \
-	-out server.crt
+    -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial \
+    -extfile <(printf "subjectAltName=DNS:localhost,IP:127.0.0.1,DNS:example.server.com") \
+    -out server.crt
 ```
 
 生成 frpc 的证书:
@@ -98,8 +98,8 @@ openssl req -new -sha256 -key client.key \
 
 openssl x509 -req -days 365 -sha256 \
     -in client.csr -CA ca.crt -CAkey ca.key -CAcreateserial \
-	-extfile <(printf "subjectAltName=DNS:client.com,DNS:example.client.com") \
-	-out client.crt
+    -extfile <(printf "subjectAltName=DNS:client.com,DNS:example.client.com") \
+    -out client.crt
 ```
 
 在本例中，server.crt 和 client.crt 都是由默认 ca 签发的，因此他们对默认 ca 是合法的。
