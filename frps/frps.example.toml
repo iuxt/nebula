@@ -1,4 +1,5 @@
 bindAddr = "0.0.0.0"
+proxyBindAddr = "0.0.0.0"
 bindPort = 7000
 kcpBindPort = 7000
 
