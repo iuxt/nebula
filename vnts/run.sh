@@ -3,4 +3,5 @@
 docker run --name vnts -d \
 	-p 29872:29872/udp \
 	--network iuxt \
-	iuxt/vnts:1.12.2
+	--env-file=.env \
+	registry.cn-hangzhou.aliyuncs.com/iuxt/vnts:1.2.12
