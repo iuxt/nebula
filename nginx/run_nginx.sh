@@ -35,7 +35,9 @@ docker run --name nginx \
   --add-host=host.docker.internal:host-gateway \
   --network iuxt \
   --restart always \
+  --log-driver=json-file \
   --log-opt max-size=1G \
+  --log-opt path=./nginx.log \
   -d nginx:1.27.0
 
 
