@@ -9,6 +9,9 @@ podman run -d \
     --network iuxt \
     --name=vaultwarden \
     --restart=always \
+    --log-driver=json-file \
+    --log-opt max-size=1G \
+    --log-opt path=./vaultwarden.log \
     vaultwarden/server:latest
 
 # 生效nginx规则
