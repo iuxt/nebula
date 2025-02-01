@@ -4,7 +4,7 @@ cd $(dirname $0)
 
 ../public/docker-network.sh
 
-docker rm -f nginx
+podman rm -f nginx
 
 # stream.d里面的端口，需要进行转发
 FORWARD_PORT=$(grep -h "listen" stream.d/*.conf | awk 'NF > 0 {print $NF}' | sed 's/;//')
@@ -21,7 +21,7 @@ done
 echo $DOCKER_PORT_MAPPING
 
 
-docker run --name nginx \
+podman run --name nginx \
   -v ./www:/usr/share/nginx/html:ro \
   -v ./nginx.conf:/etc/nginx/nginx.conf \
   -v ./conf.d:/etc/nginx/conf.d \
@@ -41,5 +41,5 @@ docker run --name nginx \
   -d nginx:1.27.0
 
 
-cd fail2ban && sudo ./set_fail2ban.sh
+# cd fail2ban && sudo ./set_fail2ban.sh
 
