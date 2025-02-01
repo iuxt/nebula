@@ -2,7 +2,7 @@
 set -euo pipefail
 cd $(dirname $0)
 
-docker run \
+podman run \
   --name ipsec-vpn-server \
   --restart=always \
   -v "$(pwd)"/ikev2-vpn-data:/etc/ipsec.d \

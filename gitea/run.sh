@@ -1,14 +1,14 @@
 #!/bin/bash
 cd $(dirname $0)
 
-../public/docker-network.sh
+../public/podman-network.sh
 
-# https://docs.gitea.com/installation/install-with-docker
+# https://docs.gitea.com/installation/install-with-podman
 #    -m 512M --memory-swap=768M \
 
 source .env
 
-docker run -d \
+podman run -d \
     --name gitea \
     --network iuxt \
     -e USER_UID=1000 \

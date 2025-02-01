@@ -3,9 +3,9 @@ cd $(dirname $0)
 
 set -euo pipefail
 
-../public/docker-network.sh
+../public/podman-network.sh
 
-docker run -it -d --name halo \
+podman run -it -d --name halo \
   -v "$PWD"/halo_data:/root/.halo \
   --network iuxt \
   --restart always \

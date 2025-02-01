@@ -1,10 +1,10 @@
 #!/bin/bash
 cd $(dirname $0)
 
-../public/docker-network.sh
+../public/podman-network.sh
 
 
-docker run -d \
+podman run -d \
     --name aria2 \
     --network iuxt \
     --restart unless-stopped \

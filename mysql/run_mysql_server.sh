@@ -4,9 +4,9 @@ cd $(dirname $0)
 
 source .env
 
-../public/docker-network.sh
+../public/podman-network.sh
 
-docker run --name mysql \
+podman run --name mysql \
        -e MYSQL_ROOT_PASSWORD="${MYSQL_ROOT_PASSWORD}" \
        -e MYSQL_DATABASE="${MYSQL_DATABASE}" \
        -v "${MYSQL_DATA}":/var/lib/mysql \

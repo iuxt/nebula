@@ -2,16 +2,16 @@
 set -euo pipefail
 cd $(dirname $0)
 
-../public/docker-network.sh
+../public/podman-network.sh
 
-docker rm -f cloudreve
+podman rm -f cloudreve
 
 mkdir -vp data/{uploads,avatar} \
 && touch data/conf.ini \
 && touch data/cloudreve.db
 
 
-docker run -d \
+podman run -d \
     --name cloudreve \
     --network iuxt \
     --mount type=bind,source=./data/conf.ini,target=/cloudreve/conf.ini \

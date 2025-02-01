@@ -2,7 +2,7 @@
 cd $(dirname $0)
 
 
-docker run -d \
+podman run -d \
     --name aria2 \
     --restart unless-stopped \
     --log-opt max-size=1m \

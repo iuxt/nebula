@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-docker rm -f gitea
+podman rm -f gitea
 
 rm -f ../nginx/conf.d/"$(basename "$(pwd)")".conf
 rm -f ../nginx/stream.d/gitea.conf

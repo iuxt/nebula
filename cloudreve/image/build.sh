@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build . -t cloudreve/cloudreve:latest
+podman build . -t cloudreve/cloudreve:latest

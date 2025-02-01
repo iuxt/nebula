@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker rm -f nginx
+podman rm -f nginx
 
 sudo rm -f /etc/fail2ban/jail.d/nginx-stream-cc.conf
 sudo rm -f /etc/fail2ban/jail.d/nginx-http-cc.conf
