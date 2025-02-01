@@ -37,7 +37,7 @@ podman run --name nginx \
   --restart always \
   --log-driver=json-file \
   --log-opt max-size=1G \
-  --log-opt path=./nginx.log \
+  --log-opt path=/root/logs/nginx.log \
   -d nginx:1.27.0
 
 

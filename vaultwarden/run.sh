@@ -13,7 +13,7 @@ podman run -d \
     --restart=always \
     --log-driver=json-file \
     --log-opt max-size=1G \
-    --log-opt path=./vaultwarden.log \
+    --log-opt path=/root/logs/vaultwarden.log \
     vaultwarden/server:latest
 
 # 生效nginx规则
