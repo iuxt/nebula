@@ -41,5 +41,5 @@ podman run --name nginx \
   -d nginx:1.27.0
 
 
-# cd fail2ban && sudo ./set_fail2ban.sh
+cd fail2ban && sudo ./set_fail2ban.sh
 
