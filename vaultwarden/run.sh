@@ -13,11 +13,13 @@ docker run -d \
     --restart=always \
     --log-driver=json-file \
     --log-opt max-size=1G \
-    --log-opt path=/root/logs/vaultwarden.log \
     docker.io/vaultwarden/server:latest
 
 # 生效nginx规则
 ../public/add_config_to_nginx.sh
+
+# 日志处理
+../public/docker_logs_link.sh $(basename $(cd $(dirname $0) && pwd))
 
 
 # fail2ban规则

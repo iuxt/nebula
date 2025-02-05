@@ -37,9 +37,11 @@ docker run -d --name nginx \
   --restart always \
   --log-driver=json-file \
   --log-opt max-size=1G \
-  --log-opt path=/root/logs/nginx.log \
   docker.io/nginx:1.27.0
 
+
+# 日志处理
+../public/docker_logs_link.sh $(basename $(cd $(dirname $0) && pwd))
 
 cd fail2ban && sudo ./set_fail2ban.sh
 

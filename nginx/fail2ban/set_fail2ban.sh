@@ -8,9 +8,6 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 
-# 日志处理
-../public/docker_logs_link.sh basename $(cd $(dirname $0) && pwd)
-
 # nginx-http-cc
 cp -f filter.d/nginx-http-cc.conf /etc/fail2ban/filter.d/
 cp -f jail.d/nginx-http-cc.conf /etc/fail2ban/jail.d/
