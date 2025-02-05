@@ -21,7 +21,7 @@ done
 echo $PORT_MAPPING
 
 
-podman run --name nginx \
+podman run -d --name nginx \
   -v ./www:/usr/share/nginx/html:ro \
   -v ./nginx.conf:/etc/nginx/nginx.conf \
   -v ./conf.d:/etc/nginx/conf.d \
@@ -38,7 +38,7 @@ podman run --name nginx \
   --log-driver=json-file \
   --log-opt max-size=1G \
   --log-opt path=/root/logs/nginx.log \
-  -d nginx:1.27.0
+  docker.io/nginx:1.27.0
 
 
 cd fail2ban && sudo ./set_fail2ban.sh

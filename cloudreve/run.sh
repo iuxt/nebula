@@ -20,7 +20,7 @@ podman run -d \
     -v $PWD/data/avatar:/cloudreve/avatar \
     -v $PWD/downloads:/downloads \
     --restart=always \
-    cloudreve/cloudreve:latest
+    docker.io/cloudreve/cloudreve:latest
 
 podman run -d \
     --name aria2 \
@@ -35,7 +35,7 @@ podman run -d \
     -e LISTEN_PORT=6888 \
     -v $PWD/aria2-config:/config \
     -v $PWD/downloads:/downloads \
-    p3terx/aria2-pro
+    docker.io/p3terx/aria2-pro
 
 
 

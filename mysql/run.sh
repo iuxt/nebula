@@ -6,7 +6,7 @@ source .env
 
 ../public/podman-network.sh
 
-podman run --name mysql \
+podman run -d --name mysql \
        -e MYSQL_ROOT_PASSWORD="${MYSQL_ROOT_PASSWORD}" \
        -e MYSQL_DATABASE="${MYSQL_DATABASE}" \
        -v "${MYSQL_DATA}":/var/lib/mysql \
@@ -17,4 +17,4 @@ podman run --name mysql \
        -p "${MYSQLX_PORT}":33060 \
        --network iuxt \
        --restart "${RESTART}" \
-       -d mysql:"${MYSQL_VERSION}"
+       docker.io/mysql:"${MYSQL_VERSION}"

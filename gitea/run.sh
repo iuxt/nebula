@@ -17,7 +17,7 @@ podman run -d \
     --mount type=bind,source=/etc/localtime,target=/etc/localtime,readonly \
     -v ./gitea-data:/data \
     --restart=always \
-    gitea/gitea:${GITEA_VERSION}
+    docker.io/gitea/gitea:${GITEA_VERSION}
 
 cp -f ./gitea-nginx-stream.conf ../nginx/stream.d/gitea.conf
 ../nginx/run_nginx.sh

@@ -17,6 +17,6 @@ podman run -d --name wordpress \
   --env-file=.env \
   --network iuxt \
   --restart always \
-  wordpress:"${WORDPRESS_VERSION}"
+  docker.io/wordpress:"${WORDPRESS_VERSION}"
 
 ../public/add_config_to_nginx.sh
