@@ -2,7 +2,7 @@
 set -euo pipefail
 cd $(dirname $0)
 
-podman rm -f frps
+docker rm -f frps
 
 rm -f /etc/fail2ban/jail.d/frps.conf
 

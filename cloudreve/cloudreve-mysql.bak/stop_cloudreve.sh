@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-podman rm -f cloudreve
+docker rm -f cloudreve
 
 rm -f ../nginx/conf.d/"$(basename "$(pwd)")".conf
 ../nginx/reload_nginx.sh

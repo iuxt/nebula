@@ -1,11 +1,11 @@
 #!/bin/bash
 set -euo pipefail
 
-../public/podman-network.sh
+../public/docker-network.sh
 
-podman rm -f cloudreve
+docker rm -f cloudreve
 
-podman run -d \
+docker run -d \
     --name cloudreve \
     --network iuxt \
     --mount type=bind,source=$PWD/conf.ini,target=/cloudreve/conf.ini \

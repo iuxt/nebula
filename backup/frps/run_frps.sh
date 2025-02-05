@@ -2,9 +2,9 @@
 set -euo pipefail
 cd $(dirname $0)
 
-podman rm -f frps
+docker rm -f frps
 
-podman run --name frps \
+docker run --name frps \
   -v "$(pwd)"/frps.toml:/etc/frp/frps.toml \
   --network host \
   --restart always \

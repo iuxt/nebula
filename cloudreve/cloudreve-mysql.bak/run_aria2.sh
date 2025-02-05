@@ -1,9 +1,9 @@
 #!/bin/bash
 
-../public/podman-network.sh
+../public/docker-network.sh
 
 
-podman run -d \
+docker run -d \
     --name aria2 \
     --network iuxt \
     --restart unless-stopped \

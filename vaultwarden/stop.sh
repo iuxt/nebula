@@ -1,7 +1,7 @@
 #!/bin/bash
 cd $(dirname $0)
 
-podman rm -f vaultwarden
+docker rm -f vaultwarden
 
 # 生效nginx规则
 rm -f ../nginx/conf.d/"$(basename "$(pwd)")".conf

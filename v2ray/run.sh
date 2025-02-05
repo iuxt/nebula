@@ -2,9 +2,9 @@
 set -euo pipefail
 cd $(dirname $0)
 
-../public/podman-network.sh
+../public/docker-network.sh
 
-podman run -d --name v2ray \
+docker run -d --name v2ray \
   --network iuxt \
   --restart always \
   --mount type=bind,source="$(pwd)"/config.json,target=/v2ray/config.json \

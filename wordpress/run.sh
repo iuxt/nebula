@@ -2,7 +2,7 @@
 set -euo pipefail
 cd $(dirname $0)
 
-../public/podman-network.sh
+../public/docker-network.sh
 source .env
 
 if [ ! -e ./php_custom.ini ];then
@@ -10,7 +10,7 @@ if [ ! -e ./php_custom.ini ];then
 fi
 
 
-podman run -d --name wordpress \
+docker run -d --name wordpress \
   -v "$PWD"/wordpress_data:/var/www/html \
   -v "$PWD"/custom_extensions:/usr/local/lib/php/extensions/custom_extensions \
   --mount type=bind,source="$PWD/php_custom.ini",target=/usr/local/etc/php/conf.d/php_custom.ini \

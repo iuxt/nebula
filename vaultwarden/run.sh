@@ -1,11 +1,11 @@
 #!/bin/bash
 cd $(dirname $0)
 
-../public/podman-network.sh
+../public/docker-network.sh
 
-podman rm -f vaultwarden
+docker rm -f vaultwarden
 
-podman run -d \
+docker run -d \
     -v "$(pwd)"/vaultwarden_data/:/data/ \
     --env-file="$(pwd)"/.env \
     --network iuxt \

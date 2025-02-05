@@ -2,16 +2,16 @@
 set -euo pipefail
 cd $(dirname $0)
 
-../public/podman-network.sh
+../public/docker-network.sh
 
-podman rm -f cloudreve
+docker rm -f cloudreve
 
 mkdir -vp data/{uploads,avatar} \
 && touch data/conf.ini \
 && touch data/cloudreve.db
 
 
-podman run -d \
+docker run -d \
     --name cloudreve \
     --network iuxt \
     --mount type=bind,source=./data/conf.ini,target=/cloudreve/conf.ini \
@@ -22,7 +22,7 @@ podman run -d \
     --restart=always \
     docker.io/cloudreve/cloudreve:latest
 
-podman run -d \
+docker run -d \
     --name aria2 \
     --network iuxt \
     --restart unless-stopped \

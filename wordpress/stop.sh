@@ -2,7 +2,7 @@
 set -euo pipefail
 cd $(dirname $0)
 
-podman rm -f wordpress
+docker rm -f wordpress
 
 rm -f ../nginx/conf.d/"$(basename "$(pwd)")".conf
 
