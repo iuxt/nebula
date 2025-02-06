@@ -24,8 +24,6 @@ docker run -d \
 
 # fail2ban规则
 cd fail2ban && ./set_fail2ban.sh
-systemctl enable fail2ban
-systemctl reload fail2ban
 
 fail2ban-client status
 
