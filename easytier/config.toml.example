@@ -1,7 +1,7 @@
-hostname = "Galaxy"
+hostname = "guanyu"
 instance_name = "iuxt"
-instance_id = "d3aeff99-f343-4f12-8e22-7e56e9de14dd"
-ipv4 = "10.233.233.11/24"
+instance_id = "5057fea1-b2be-47b0-9e42-5c2cf36d3f82"
+ipv4 = "10.233.233.1/24"
 dhcp = false
 listeners = [
     "tcp://0.0.0.0:11010",
@@ -12,15 +12,12 @@ rpc_portal = "0.0.0.0:0"
 
 [network_identity]
 network_name = "iuxt"
-network_secret = "ef1fa6f8-d021-4b77-a3ea-4865f5b74ecc"
+network_secret = "3709e702-1356-4ded-9be4-a53f3915e7c8"
 
-[[peer]]
-uri = "tcp://guanyu.babudiu.com:11010"
-
-[[proxy_network]]
-cidr = "192.168.22.0/24"
+[vpn_portal_config]
+client_cidr = "10.14.14.0/24"
+wireguard_listen = "0.0.0.0:11013"
 
 [flags]
 dev_name = "easytier"
 enable_kcp_proxy = true
-
