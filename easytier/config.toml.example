@@ -1,0 +1,26 @@
+hostname = "Galaxy"
+instance_name = "iuxt"
+instance_id = "d3aeff99-f343-4f12-8e22-7e56e9de14dd"
+ipv4 = "10.233.233.11/24"
+dhcp = false
+listeners = [
+    "tcp://0.0.0.0:11010",
+    "udp://0.0.0.0:11010",
+    "wg://0.0.0.0:11011",
+]
+rpc_portal = "0.0.0.0:0"
+
+[network_identity]
+network_name = "iuxt"
+network_secret = "ef1fa6f8-d021-4b77-a3ea-4865f5b74ecc"
+
+[[peer]]
+uri = "tcp://guanyu.babudiu.com:11010"
+
+[[proxy_network]]
+cidr = "192.168.22.0/24"
+
+[flags]
+dev_name = "easytier"
+enable_kcp_proxy = true
+
