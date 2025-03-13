@@ -13,7 +13,7 @@ docker run -d \
     --restart=always \
     --log-driver=json-file \
     --log-opt max-size=1G \
-    docker.io/vaultwarden/server:latest
+    vaultwarden/server:1.33.2
 
 # 生效nginx规则
 ../public/add_config_to_nginx.sh
