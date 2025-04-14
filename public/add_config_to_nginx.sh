@@ -9,4 +9,4 @@ if [ ! -e ./custom_nginx.conf ];then
 fi
 
 /bin/cp -f custom_nginx.conf ../nginx/conf.d/"$app".conf
-../nginx/reload_nginx.sh
+../nginx/reload.sh
