@@ -46,6 +46,13 @@
             "geoip:private"
           ],
           "outboundTag": "blocked"
+        },
+	{
+           "type": "field",
+           "outboundTag": "direct",
+           "inboundTag": [
+               "in-0"
+           ]
         }
       ]
     },
