@@ -16,12 +16,7 @@
             "email": "love@example.com"
           }
         ],
-        "decryption": "none",
-        "fallbacks": [
-          {
-            "dest": "/tmp/iuxt/xray-fallback.sock"
-          }
-        ]
+        "decryption": "none"
       },
       "tag": "in-0",
       "streamSettings": {
