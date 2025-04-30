@@ -19,7 +19,7 @@
         "decryption": "none",
         "fallbacks": [
           {
-            "dest": "8000"
+            "dest": 8000
           }
         ]
       },
