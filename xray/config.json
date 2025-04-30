@@ -12,16 +12,10 @@
         "clients": [
           {
             "id": "2ebb5198-f3ca-4105-bb91-2b72cca93abc",
-            "level": 0,
-            "email": "love@example.com"
+            "level": 0
           }
         ],
-        "decryption": "none",
-        "fallbacks": [
-          {
-            "dest": 8000
-          }
-        ]
+        "decryption": "none"
       },
       "tag": "in-0",
       "streamSettings": {
