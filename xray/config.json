@@ -19,7 +19,7 @@
         "decryption": "none",
         "fallbacks": [
           {
-            "dest": "/app/xray-fallback.sock"
+            "dest": "/tmp/iuxt/xray-fallback.sock"
           }
         ]
       },

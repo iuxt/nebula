@@ -20,6 +20,7 @@ done
 # 输出最终的结果
 echo $PORT_MAPPING
 
+mkdir /tmp/iuxt
 
 docker run -d --name nginx \
   -v ./www:/usr/share/nginx/html:ro \
@@ -28,6 +29,7 @@ docker run -d --name nginx \
   -v ./stream.d:/etc/nginx/stream.d \
   -v ./ssl:/etc/nginx/ssl \
   -v ./src:/src \
+  -v /tmp/iuxt:/tmp/iuxt \
   --mount type=bind,source=/etc/localtime,target=/etc/localtime,readonly \
   -p 80:80 \
   -p 443:443 \
