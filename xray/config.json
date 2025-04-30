@@ -16,7 +16,12 @@
             "email": "love@example.com"
           }
         ],
-        "decryption": "none"
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "dest": "8000"
+          }
+        ]
       },
       "tag": "in-0",
       "streamSettings": {
