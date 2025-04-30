@@ -1,0 +1,69 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "dns": {},
+  "stats": {},
+  "inbounds": [
+    {
+      "port": 2333,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "2ebb5198-f3ca-4105-bb91-2b72cca93abc",
+            "level": 0,
+            "email": "love@example.com"
+          }
+        ],
+        "decryption": "none"
+      },
+      "tag": "in-0",
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+
+        "wsSettings": {
+          "path": "/etc/nginx/nginx.conf"
+        }
+      }
+    }
+  ],
+  
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "blocked"
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "inboundTag": [
+          "in-0"
+        ]
+      }
+    ]
+  },
+
+  "outbounds": [
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ],
+
+  "policy": {},
+  "reverse": {},
+  "transport": {}
+}
