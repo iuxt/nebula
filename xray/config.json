@@ -22,14 +22,12 @@
       "streamSettings": {
         "network": "ws",
         "security": "none",
-
         "wsSettings": {
           "path": "/etc/nginx/nginx.conf"
         }
       }
     }
   ],
-  
   "routing": {
     "domainStrategy": "AsIs",
     "rules": [
@@ -49,7 +47,6 @@
       }
     ]
   },
-
   "outbounds": [
     {
       "tag": "direct",
@@ -62,7 +59,6 @@
       "settings": {}
     }
   ],
-
   "policy": {},
   "reverse": {},
   "transport": {}
