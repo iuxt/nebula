@@ -11,10 +11,10 @@ if [ -f /etc/os-release ]; then
     source /etc/os-release
     if [ "$ID" = "ubuntu" ]; then
         echo "检测到Ubuntu系统"
-	cp system-fail2ban/jail.d/ssh.conf /etc/fail2ban/jail.d/ssh.conf
-	rm -f /etc/fail2ban/jail.d/defaults-debian.conf
-	systemctl enable --now fail2ban
-	systemctl reload fail2ban
+    cp system-fail2ban/jail.d/ssh.conf /etc/fail2ban/jail.d/ssh.conf
+    rm -f /etc/fail2ban/jail.d/defaults-debian.conf
+    systemctl enable --now fail2ban
+    systemctl reload fail2ban
         echo "操作完成。"
     else
         echo "当前系统不是Ubuntu，已跳过删除操作。"
