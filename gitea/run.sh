@@ -3,6 +3,8 @@ cd $(dirname $0)
 
 ../public/docker-network.sh
 
+docker rm -f gitea
+
 # https://docs.gitea.com/installation/install-with-docker
 #    -m 512M --memory-swap=768M \
 
@@ -20,5 +22,5 @@ docker run -d \
     docker.io/gitea/gitea:${GITEA_VERSION}
 
 cp -f ./gitea-nginx-stream.conf ../nginx/stream.d/gitea.conf
-../nginx/run_nginx.sh
+../nginx/run.sh
 ../public/add_config_to_nginx.sh
