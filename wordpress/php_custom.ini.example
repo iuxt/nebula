@@ -1,3 +1,0 @@
-upload_max_filesize = 200M
-post_max_size = 320M
-;extension=/usr/local/lib/php/extensions/custom_extensions/swoole_loader_80_nts.so

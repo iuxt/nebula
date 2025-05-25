@@ -6,16 +6,16 @@ cd $(dirname $0)
 source .env
 
 if [ ! -e ./php_custom.ini ];then
-    cp ./php_custom.ini.example ./php_custom.ini
+    cp ./php.ini.example ./php_custom.ini
 fi
 
 docker rm -f wordpress
 chown -R www-data:www-data ./wordpress_data
 
 docker run -d --name wordpress \
-  -v "$PWD"/wordpress_data:/var/www/html \
-  -v "$PWD"/custom_extensions:/usr/local/lib/php/extensions/custom_extensions \
-  --mount type=bind,source="$PWD/php_custom.ini",target=/usr/local/etc/php/conf.d/php_custom.ini \
+  -v ./wordpress_data:/var/www/html \
+  -v ./extensions:/extensions \
+  --mount type=bind,source=./php_custom.ini,target=/usr/local/etc/php/conf.d/php_custom.ini \
   --env-file=.env \
   --network iuxt \
   --restart always \
