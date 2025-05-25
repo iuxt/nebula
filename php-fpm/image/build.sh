@@ -33,4 +33,10 @@ apt-get install -y libmagickwand-dev
 pecl install imagick
 docker-php-ext-enable imagick
 
+# opcache 模块
+docker-php-ext-configure opcache --enable-opcache
+docker-php-ext-install opcache
+docker-php-ext-enable opcache
+
+
 php -m
