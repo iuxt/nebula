@@ -9,6 +9,8 @@ if [ ! -e ./php_custom.ini ];then
     cp ./php_custom.ini.example ./php_custom.ini
 fi
 
+docker rm -f wordpress
+chown -R www-data:www-data ./wordpress_data
 
 docker run -d --name wordpress \
   -v "$PWD"/wordpress_data:/var/www/html \
