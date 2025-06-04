@@ -479,14 +479,9 @@
                     <h3>Drag & Drop File Here or Click to Select</h3>
                     <p class="status-message" id="maxSizeMessage">All file types supported. Max size: Loading...</p>
                     
-                    <!-- 将命令行界面移动到上传区域内部 -->
-                    <div class="command-line" id="commandLineSection">
-                        <div class="command-line-title">Command Line Interface</div>
-                        <pre id="curlCommand1">curl -T example.txt http://your-server.com</pre>
-                        <pre id="curlCommand2">curl -X POST -F "file=@example.txt" http://your-server.com/</pre>
-                    </div>
+
                 </div>
-                
+
                 <div class="selected-file hidden" id="selectedFileContainer">
                     <div class="file-name" id="selectedFileName"></div>
                     <div class="file-size" id="selectedFileSize"></div>
@@ -497,10 +492,16 @@
                 
                 <input type="file" id="fileInput" class="file-input">
             </div>
-            
+
             <div class="file-size-error" id="sizeError"></div>
                         
             <button id="uploadButton" class="btn btn-upload">Start Upload</button>
+
+            <div class="command-line" id="commandLineSection">
+                <div class="command-line-title">Command Line Interface</div>
+                <pre id="curlCommand1">curl -T example.txt http://your-server.com</pre>
+                <pre id="curlCommand2">curl -X POST -F "file=@example.txt" http://your-server.com/</pre>
+            </div>
         </div>
         
         <div class="progress-container" id="progressContainer">
@@ -667,7 +668,6 @@
                 if(el) el.style.display = 'none';
             });
             
-            // 直接显示上传界面，跳过授权检查
             showSection(elements.uploadSection);
             
             let baseServerUrl = new URL(window.location.origin).href;
