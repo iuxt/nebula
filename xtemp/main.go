@@ -34,17 +34,10 @@ const (
 	filePerm os.FileMode = 0640
 )
 
-type StorageType string
-
-const (
-	StorageLocal StorageType = "local"
-)
-
 type AppConfig struct {
 	BaseStoragePath string
 	MaxUploadSize   int64
 	TrustedProxies  []string
-	StorageType     StorageType
 }
 
 // --- Globals ---
@@ -59,18 +52,12 @@ var (
 func init() {
 	logger = log.New(os.Stdout, "xtemp_app: ", log.Ldate|log.Ltime|log.Lshortfile)
 	config = loadConfig()
-
-	switch config.StorageType {
-	case StorageLocal:
-		if err := os.MkdirAll(config.BaseStoragePath, dirPerm); err != nil {
-			logger.Fatalf("Could not create base storage directory %s: %v", config.BaseStoragePath, err)
-		}
-		logger.Printf("Base storage directory %s ensured with permissions %o", config.BaseStoragePath, dirPerm)
+	if err := os.MkdirAll(config.BaseStoragePath, dirPerm); err != nil {
+		logger.Fatalf("Could not create base storage directory %s: %v", config.BaseStoragePath, err)
 	}
-
+	logger.Printf("Base storage directory %s ensured with permissions %o", config.BaseStoragePath, dirPerm)
 	logger.Printf("Max upload size set to %d bytes (%dMB)", config.MaxUploadSize, config.MaxUploadSize/(1<<20))
 	logger.Printf("Trusted proxies configured: %v", config.TrustedProxies)
-	logger.Printf("Storage type: %s", config.StorageType)
 }
 
 func loadConfig() *AppConfig {
@@ -78,7 +65,6 @@ func loadConfig() *AppConfig {
 		BaseStoragePath: defaultStoragePath,
 		MaxUploadSize:   defaultMaxUploadSize,
 		TrustedProxies:  []string{"127.0.0.1", "::1", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "fc00::/7"},
-		StorageType:     StorageLocal,
 	}
 	if path := os.Getenv(envBaseStoragePath); path != "" {
 		cfg.BaseStoragePath = filepath.Clean(path)
@@ -160,11 +146,9 @@ func buildAndVerifyStoragePath(randomID, userFilePath string) (fullPath string, 
 	if !strings.HasPrefix(absFullPath, absBasePath) {
 		return "", "", errors.New("invalid filepath, attempts to escape base storage directory")
 	}
-	if config.StorageType == StorageLocal {
-		dirToCreate := filepath.Dir(fullPath)
-		if err := os.MkdirAll(dirToCreate, dirPerm); err != nil {
-			return "", "", fmt.Errorf("failed to create directory %s: %w", dirToCreate, err)
-		}
+	dirToCreate := filepath.Dir(fullPath)
+	if err := os.MkdirAll(dirToCreate, dirPerm); err != nil {
+		return "", "", fmt.Errorf("failed to create directory %s: %w", dirToCreate, err)
 	}
 	return fullPath, targetDir, nil
 }
@@ -214,9 +198,7 @@ func commonUploadLogic(c *gin.Context, filename string, bodyReader io.Reader, is
 		return
 	}
 	if bytesWritten > config.MaxUploadSize {
-		if config.StorageType == StorageLocal {
-			os.Remove(fullStoragePath)
-		}
+		os.Remove(fullStoragePath)
 		abortWithError(c, http.StatusRequestEntityTooLarge,
 			fmt.Sprintf("Uploaded file size (%d bytes) exceeds maximum allowed size (%d bytes)", bytesWritten, config.MaxUploadSize), nil)
 		return
