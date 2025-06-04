@@ -8,6 +8,9 @@ cd $(dirname $0)
 docker rm -f xtemp
 docker run --name xtemp -d \
 	--network iuxt \
+	-e XTEMP_STORAGE_PATH=/data \
+	-e MAX_UPLOAD_SIZE=2147483648 \
+	-v ./data:/data \
 	iuxt/xtemp:latest
 
 
