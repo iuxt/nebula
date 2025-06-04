@@ -325,9 +325,50 @@ func handleGetMaxUploadSize(c *gin.Context) {
 	})
 }
 
+// 清理旧文件的goroutine
+// 每30分钟检查一次，删除超过24小时未修改的文件和目录
+func cleanupOldFiles() {
+	ticker := time.NewTicker(30 * time.Minute) // 每小时检查一次
+	defer ticker.Stop()
+
+	for range ticker.C {
+		logger.Println("Starting cleanup of old files...")
+		err := filepath.Walk(config.BaseStoragePath, func(path string, info os.FileInfo, err error) error {
+			if err != nil {
+				return nil // 跳过错误
+			}
+
+			// 跳过根目录
+			if path == config.BaseStoragePath {
+				return nil
+			}
+
+			// 检查文件/目录是否超过24小时
+			if time.Since(info.ModTime()) > 12*time.Hour {
+				if info.IsDir() {
+					// 如果是目录，删除整个目录
+					logger.Printf("Deleting old directory: %s (modified at %v)", path, info.ModTime())
+					os.RemoveAll(path)
+				} else {
+					// 如果是文件，删除单个文件
+					logger.Printf("Deleting old file: %s (modified at %v)", path, info.ModTime())
+					os.Remove(path)
+				}
+			}
+			return nil
+		})
+
+		if err != nil {
+			logger.Printf("Cleanup error: %v", err)
+		}
+	}
+}
+
 // --- Main ---
 
 func main() {
+	// 启动清理goroutine
+	go cleanupOldFiles()
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.New()
 	r.Use(gin.Logger())
