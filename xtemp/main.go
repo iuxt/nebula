@@ -27,7 +27,7 @@ const (
 	envMaxUploadSize   = "MAX_UPLOAD_SIZE"
 
 	defaultStoragePath   = "/var/lib/xtemp-store"
-	defaultMaxUploadSize = 50 << 20 // 50MB
+	defaultMaxUploadSize = 5000 << 20
 	bufferSize           = 16 * 1024
 
 	dirPerm  os.FileMode = 0750
