@@ -435,77 +435,6 @@
             margin-top: auto;
             opacity: 0.8;
         }
-        
-        .acceptance-section {
-             text-align: center;
-        }
-        
-        .acceptance-title {
-            font-size: 1.5rem;
-            color: var(--text-headings);
-            margin-bottom: 25px;
-            font-weight: 500;
-        }
-        
-        .acceptance-input {
-            width: 100%;
-            padding: 14px;
-            border: 1px solid var(--border-color-light);
-            border-radius: 6px;
-            font-size: 1.1rem;
-            margin-bottom: 25px;
-            text-align: center;
-            transition: all 0.3s ease-out;
-            background-color: var(--bg-deep-cosmos);
-            color: var(--text-primary);
-        }
-        .acceptance-input::placeholder { color: var(--text-secondary); opacity: 0.7;}
-        
-        .acceptance-input:focus {
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 0 3px var(--accent-glow-color-light), inset 0 1px 2px rgba(0,0,0,0.1);
-            outline: none;
-        }
-        
-        .btn-confirm-acceptance {
-            background-color: var(--accent-warning);
-            color: var(--bg-deep-cosmos);
-            border-color: var(--accent-warning);
-            font-weight: 600;
-        }
-        .btn-confirm-acceptance:hover {
-            background-color: #e6a73f;
-            border-color: #e6a73f;
-             box-shadow: 0 6px 15px rgba(210, 153, 34, 0.3);
-        }
-        
-        .acceptance-terms-message {
-            margin-bottom: 25px; 
-            color: var(--text-secondary); 
-            text-align: left; 
-            font-size: 1rem; 
-            line-height: 1.7;
-            background-color: rgba(0,0,0,0.15);
-            padding: 20px;
-            border-radius: 6px;
-            border-left: 4px solid var(--accent-warning);
-        }
-        .acceptance-terms-message strong {
-            color: var(--accent-warning);
-            font-weight: 600;
-        }
-
-        .input-error-message {
-            color: var(--accent-error);
-            background-color: rgba(248, 81, 73, 0.1);
-            border: 1px solid var(--accent-error);
-            padding: 12px 15px;
-            border-radius: 6px;
-            font-weight: 500;
-            margin-top: 20px;
-            font-size: 1rem;
-            text-align: left;
-        }
 
         .file-size-error {
             color: var(--accent-error);
@@ -542,20 +471,6 @@
 <body>
     <div class="page-wrapper">
         <h1>XTemp File Hub</h1>
-        
-        <div class="acceptance-section" id="acceptanceSection">
-            <div class="acceptance-title">Terms of Service Acceptance</div>
-            <div class="acceptance-terms-message">
-                Important Notice:<br>
-                1. This file-sharing service is a public platform. Anyone with the link can access your data.<br>
-                2. Uploaded files will be retained on the server for approximately <strong>24 hours</strong> and then automatically deleted.<br>
-                3. You can also delete your uploaded file at any time using a DELETE request.<br>
-                If you have read and agree to the above terms, please type "<strong>ACCEPT</strong>" (uppercase) below to proceed.
-            </div>
-            <input type="text" class="acceptance-input" id="acceptanceInput" placeholder="Enter command: ACCEPT">
-            <button class="btn btn-confirm-acceptance" id="confirmAcceptanceBtn">I Understand and Agree</button>
-            <div class="input-error-message hidden" id="acceptanceErrorMessage"></div>
-        </div>
         
         <div class="upload-section" id="uploadSection">
             <div class="upload-area" id="uploadArea">
@@ -748,17 +663,12 @@
         }
 
         function init() {
-            [elements.acceptanceSection, elements.uploadSection, elements.progressContainer, elements.resultContainer].forEach(el => {
+            [elements.uploadSection, elements.progressContainer, elements.resultContainer].forEach(el => {
                 if(el) el.style.display = 'none';
             });
             
-            const storedAuth = localStorage.getItem(AUTH_KEY);
-            if (storedAuth === ACCEPTANCE_STRING) {
-                state.isAuthenticated = true;
-                showSection(elements.uploadSection);
-            } else {
-                showSection(elements.acceptanceSection);
-            }
+            // 直接显示上传界面，跳过授权检查
+            showSection(elements.uploadSection);
             
             let baseServerUrl = new URL(window.location.origin).href;
             if (baseServerUrl.endsWith('/')) {
@@ -771,14 +681,6 @@
             // 从后端获取最大上传大小配置
             fetchMaxUploadSize();
 
-            elements.confirmAcceptanceBtn.addEventListener('click', verifyAcceptance);
-            elements.acceptanceInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    e.preventDefault(); 
-                    verifyAcceptance();
-                }
-            });
-            
             initProgressCircle();
 
             elements.uploadArea.addEventListener('click', handleUploadClick);
@@ -932,13 +834,6 @@
                 
                 if (!state.selectedFile) {
                     showToast('Error: Please select a file to upload first.', 'error');
-                    return;
-                }
-                
-                if (!state.isAuthenticated) {
-                    showToast('Warning: Access not authorized. Please confirm the terms first.', 'error');
-                    await showSection(elements.acceptanceSection);
-                    elements.acceptanceInput.focus();
                     return;
                 }
                 
@@ -1184,13 +1079,8 @@
             elements.selectedFileContainer.style.opacity = 0;
             hideSizeError();
             
-            if (state.isAuthenticated) {
-                await showSection(elements.uploadSection);
-                elements.acceptanceErrorMessage.classList.add('hidden');
-                 if (elements.acceptanceInput) elements.acceptanceInput.value = '';
-            } else {
-                await showSection(elements.acceptanceSection);
-            }
+            // 直接显示上传界面
+            await showSection(elements.uploadSection);
             
             if(elements.uploadButton) {
                 elements.uploadButton.disabled = false;
