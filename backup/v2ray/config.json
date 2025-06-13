@@ -1,0 +1,62 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "dns": {},
+  "stats": {},
+  "inbounds": [
+    {
+      "port": 2333,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "2ebb5198-f3ca-4105-bb91-2b72cca93abc",
+            "alterId": 0
+          }
+        ]
+      },
+      "tag": "in-0",
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/etc/nginx/nginx.conf"
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ],
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "blocked"
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "inboundTag": [
+          "in-0"
+        ]
+      }
+    ]
+  },
+  "policy": {},
+  "reverse": {},
+  "transport": {}
+}
