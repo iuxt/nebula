@@ -21,3 +21,5 @@ wireguard_listen = "0.0.0.0:11013"
 [flags]
 dev_name = "easytier"
 enable_kcp_proxy = true
+private_mode = true
+
