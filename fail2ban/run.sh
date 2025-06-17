@@ -13,6 +13,6 @@ docker run -d \
   -e VERBOSITY=-vv \
   -v ./config:/config \
   -v /var/log:/var/log:ro \
-  -v /path/to/vaultwarden/log:/remotelogs/vaultwarden:ro `#optional` \
+  -v /root/logs:/remotelogs:ro \
   --restart unless-stopped \
   lscr.io/linuxserver/fail2ban:latest
