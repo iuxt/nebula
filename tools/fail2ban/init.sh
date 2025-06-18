@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-cp system-fail2ban/jail.d/ssh.conf ../../fail2ban/config/fail2ban/jail.d/
+cp system-fail2ban/jail.d/sshd.conf ../../fail2ban/config/fail2ban/jail.d/
 
 docker exec -it fail2ban fail2ban-client reload
 docker exec -it fail2ban fail2ban-client status sshd
