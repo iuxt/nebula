@@ -1,5 +1,6 @@
 #!/bin/bash
 set -euo pipefail
+cd $(dirname $0)
 
 
 if [ "$(id -u)" != "0" ]; then

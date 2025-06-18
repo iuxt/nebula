@@ -1,4 +1,6 @@
 #!/bin/bash
+cd $(dirname $0)
+
 docker rm -f php-test
 chown -R 33:33 ./app 
 docker run --rm -d --name php-test \

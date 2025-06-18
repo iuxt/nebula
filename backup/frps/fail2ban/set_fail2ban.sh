@@ -1,4 +1,5 @@
 #!/bin/bash
+cd $(dirname $0)
 
 if [ "$(id -u)" != "0" ]; then
     echo "Error: 必须使用ROOT用户来运行， 你可以在命令前面加上 sudo "
