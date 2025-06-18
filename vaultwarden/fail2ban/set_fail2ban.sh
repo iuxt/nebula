@@ -7,8 +7,8 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # vaultwarden
-cp -f filter.d/vaultwarden.conf ../../fail2ban/config/filter.d/
-cp -f jail.d/vaultwarden.conf ../../fail2ban/config/jail.d/
+cp -f filter.d/vaultwarden.conf ../../fail2ban/config/fail2ban/filter.d/
+cp -f jail.d/vaultwarden.conf ../../fail2ban/config/fail2ban/jail.d/
 
 
 docker exec fail2ban fail2ban-client reload

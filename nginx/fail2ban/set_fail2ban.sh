@@ -22,12 +22,12 @@ else
 fi
 
 # nginx-http-cc
-cp -f filter.d/nginx-http-cc.conf ../../fail2ban/config/filter.d/
-cp -f jail.d/nginx-http-cc.conf ../../fail2ban/config/jail.d/
+cp -f filter.d/nginx-http-cc.conf ../../fail2ban/config/fail2ban/filter.d/
+cp -f jail.d/nginx-http-cc.conf ../../fail2ban/config/fail2ban/jail.d/
 
 # nginx-stream-cc
-cp -f filter.d/nginx-stream-cc.conf ../../fail2ban/config/filter.d/
-cp -f jail.d/nginx-stream-cc.conf ../../fail2ban/config/jail.d/
+cp -f filter.d/nginx-stream-cc.conf ../../fail2ban/config/fail2ban/filter.d/
+cp -f jail.d/nginx-stream-cc.conf ../../fail2ban/config/fail2ban/jail.d/
 
 
 docker exec -it fail2ban fail2ban-client reload
