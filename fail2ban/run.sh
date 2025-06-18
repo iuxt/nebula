@@ -13,6 +13,7 @@ docker run -d \
   -e VERBOSITY=-vv \
   -v ./config:/config \
   -v /var/log:/var/log:ro \
-  -v /root/logs:/remotelogs:ro \
+  -v /root/logs:/root/logs:ro \
+  -v /var/lib/docker/containers:/var/lib/docker/containers:ro \
   --restart unless-stopped \
   lscr.io/linuxserver/fail2ban:latest
