@@ -1,9 +1,9 @@
 #!/bin/bash
 
-jail_list=$(fail2ban-client status | grep "Jail list" | awk -F ":" '{print $2}' | xargs | sed 's/,//g')
+jail_list=$(docker exec fail2ban fail2ban-client status | grep "Jail list" | awk -F ":" '{print $2}' | xargs | sed 's/,//g')
 
 for i in ${jail_list[*]};
 do
-    fail2ban-client status "$i"
+    docker exec fail2ban fail2ban-client status "$i"
 done
 
