@@ -25,5 +25,3 @@ docker run -d \
 # fail2ban规则
 cd fail2ban && ./set_fail2ban.sh
 
-fail2ban-client status
-
