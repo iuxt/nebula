@@ -9,9 +9,8 @@ rm -f ../nginx/conf.d/"$(basename "$(pwd)")".conf
 
 
 # fail2ban规则
-rm -f /etc/fail2ban/jail.d/vaultwarden.conf
-systemctl enable fail2ban
-systemctl reload fail2ban
+rm -f ../../fail2ban/config/fail2ban/jail.d/vaultwarden.conf
 
-fail2ban-client status
+docker exec -it fail2ban fail2ban-client reload
+docker exec -it fail2ban fail2ban-client status
 
