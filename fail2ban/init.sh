@@ -3,9 +3,6 @@
 set -euo pipefail
 cd $(dirname $0)
 
-cp system-fail2ban/jail.d/sshd.conf ../../fail2ban/config/fail2ban/jail.d/
-
-
 # 获取SSH日志路径
 get_sshd_log_path() {
     # 检查rsyslog配置
