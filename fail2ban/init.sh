@@ -52,7 +52,7 @@ get_sshd_port() {
 generate_fail2ban_config() {
     log_path="$1"
     ssh_port="$2"
-    config_file="./config/fail2ban/jail.d/"
+    config_file="./config/fail2ban/jail.d/sshd.conf"
 
     echo "生成fail2ban配置到: $config_file"
     cat << EOF | sudo tee "$config_file" >/dev/null
