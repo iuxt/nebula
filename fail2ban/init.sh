@@ -27,7 +27,7 @@ else
 fi
 
 echo "检测到SSH日志路径: $log_path"
-echo "检测到SSH端口: $sshd_port"
+echo "检测到SSH端口: $ssh_port"
 
 # 生成fail2ban配置
 config_file="./config/fail2ban/jail.d/sshd.conf"
