@@ -5,24 +5,6 @@ cd $(dirname $0)
 
 # 获取SSH日志路径
 get_sshd_log_path() {
-    # 检查rsyslog配置
-    if [ -f /etc/rsyslog.conf ]; then
-        log_path=$(grep -i "auth\.\*" /etc/rsyslog.conf | awk '{print $2}' | head -n 1)
-        if [ -n "$log_path" ] && [ -f "$log_path" ]; then
-            echo "$log_path"
-            return
-        fi
-    fi
-
-    # 检查systemd日志（journalctl）
-    if command -v journalctl >/dev/null 2>&1; then
-        if journalctl -u sshd --no-pager >/dev/null 2>&1; then
-            echo "journalctl -u sshd --no-pager"
-            return
-        fi
-    fi
-
-    # 默认日志路径（Ubuntu/Debian vs CentOS/RHEL）
     if [ -f /var/log/auth.log ]; then
         echo "/var/log/auth.log"
     elif [ -f /var/log/secure ]; then
