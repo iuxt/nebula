@@ -12,5 +12,6 @@ docker run --name minio -d \
 
 ../public/add_config_to_nginx.sh
 
-docker logs -f minio
+sleep 2
+docker logs minio
 
