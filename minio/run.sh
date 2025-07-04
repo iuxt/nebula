@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+
+docker rm -f minio
+
+docker run --name minio -d \
+    --env-file=.env \
+    --network iuxt \
+    -v ./data:/data \
+    minio/minio:RELEASE.2025-04-22T22-12-26Z server --console-address ":9001" /data
+
+
+docker logs -f minio
+
