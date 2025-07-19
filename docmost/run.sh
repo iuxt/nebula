@@ -2,6 +2,8 @@
 
 docker rm -f docmost
 
+chown -R 1000:1000 data/
+
 docker run -d --name docmost \
     --network iuxt \
     --restart unless-stopped \
