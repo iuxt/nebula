@@ -9,7 +9,7 @@ rm -f ../nginx/conf.d/"$(basename "$(pwd)")".conf
 
 
 # fail2ban规则
-rm -f ../../fail2ban/config/fail2ban/jail.d/vaultwarden.conf
+rm -f ../fail2ban/config/fail2ban/jail.d/vaultwarden.conf
 
 docker exec -it fail2ban fail2ban-client reload
 docker exec -it fail2ban fail2ban-client status
