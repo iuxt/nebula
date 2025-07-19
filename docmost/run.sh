@@ -1,5 +1,7 @@
 #!/bin/bash
 
+docker rm -f docmost
+
 docker run -d --name docmost \
     --network iuxt \
     --restart unless-stopped \
@@ -7,7 +9,7 @@ docker run -d --name docmost \
     -e DATABASE_URL=postgresql://iuxt:vzVqG9ijCcco@postgres:5432/docmost?schema=public \
     -e REDIS_URL=redis://redis:6379 \
     -e APP_URL=https://doc.babudiu.com \
-    -e APP_SECRET=Bs29GR1Hix7k \
+    -e APP_SECRET=6BrF0U3RR3G0DTfmXB92BZ6gHUhTnM4LFKHjCpbz \
     docmost/docmost:latest
 
 
