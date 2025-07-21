@@ -9,5 +9,7 @@ docker run -d --name outline \
 	--network iuxt \
 	docker.getoutline.com/outlinewiki/outline:latest
 
+../public/add_config_to_nginx.sh
+
 docker logs -f outline
 
