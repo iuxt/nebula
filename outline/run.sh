@@ -1,7 +1,9 @@
 #!/bin/bash
-#
-#
+
 docker rm -f outline
+
+mkdir ./data
+chown -R 1001:1001 ./data
 
 docker run -d --name outline \
 	--env-file=.env \
