@@ -2,7 +2,7 @@
 set -euo pipefail
 cd $(dirname $0)
 
-docker rm -f cloudreve aria2
+docker rm -f cloudreve
 
 rm -f ../nginx/conf.d/"$(basename "$(pwd)")".conf
 ../nginx/reload.sh

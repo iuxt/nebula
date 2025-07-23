@@ -6,37 +6,11 @@ cd $(dirname $0)
 
 docker rm -f cloudreve
 
-mkdir -vp data/{uploads,avatar} \
-&& touch data/conf.ini \
-&& touch data/cloudreve.db
-
-
 docker run -d \
     --name cloudreve \
     --network iuxt \
-    --mount type=bind,source=./data/conf.ini,target=/cloudreve/conf.ini \
-    --mount type=bind,source=./data/cloudreve.db,target=/cloudreve/cloudreve.db \
-    -v $PWD/data/uploads:/cloudreve/uploads \
-    -v $PWD/data/avatar:/cloudreve/avatar \
-    -v $PWD/downloads:/downloads \
+    -v ./data:/cloudreve/data \
     --restart=always \
-    docker.io/cloudreve/cloudreve:latest
-
-docker run -d \
-    --name aria2 \
-    --network iuxt \
-    --restart unless-stopped \
-    --log-opt max-size=1m \
-    -e PUID=$UID \
-    -e PGID=$(id -g) \
-    -e UMASK_SET=022 \
-    -e RPC_SECRET=com.012 \
-    -e RPC_PORT=6800 \
-    -e LISTEN_PORT=6888 \
-    -v $PWD/aria2-config:/config \
-    -v $PWD/downloads:/downloads \
-    docker.io/p3terx/aria2-pro
-
-
+    cloudreve/cloudreve:4.3.0
 
 ../public/add_config_to_nginx.sh
