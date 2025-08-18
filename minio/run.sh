@@ -8,6 +8,7 @@ docker run --name minio -d \
     --network iuxt \
     -v ./data:/data \
     -v ./config:/root/.mc \
+    --restart always \
     minio/minio:RELEASE.2025-04-22T22-12-26Z server --console-address ":9001" /data
 
 ../public/add_config_to_nginx.sh

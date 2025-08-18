@@ -11,6 +11,7 @@ docker run --name xtemp -d \
 	-e XTEMP_STORAGE_PATH=/data \
 	-e MAX_UPLOAD_SIZE=2147483648 \
 	-v ./data:/data \
+	--restart always \
 	iuxt/xtemp:latest
 
 
