@@ -4,6 +4,8 @@ cd $(dirname $0)
 
 ../public/docker-network.sh
 
+docker rm -f xray
+
 docker run -d --name xray \
   --network iuxt \
   --restart always \
