@@ -57,6 +57,17 @@ def main():
         "docker.io/nginx:1.27.0"
     )
 
+    # 创建日志符号链接
+    print("创建nginx日志符号链接...")
+    public_dir = os.path.join(script_dir, "../public")
+    docker_logs_link_script = os.path.join(public_dir, "docker_logs_link.py")
+    if os.path.exists(docker_logs_link_script):
+        run_command(f"python3 {docker_logs_link_script} nginx")
+    else:
+        print(f"错误: 找不到脚本 {docker_logs_link_script}")
+        sys.exit(1)
+
+
     # 执行fail2ban设置脚本
     print("配置fail2ban...")
     fail2ban_dir = os.path.join(script_dir, "fail2ban")

@@ -2,7 +2,7 @@
 set -euo pipefail
 cd $(dirname $0)
 
-../public/docker-network.sh
+../public/docker-network.py
 source .env
 
 if [ ! -e ./php_custom.ini ];then

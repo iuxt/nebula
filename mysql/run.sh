@@ -4,7 +4,7 @@ cd $(dirname $0)
 
 source .env
 
-../public/docker-network.sh
+../public/docker-network.py
 
 docker run -d --name mysql \
        -e MYSQL_ROOT_PASSWORD="${MYSQL_ROOT_PASSWORD}" \

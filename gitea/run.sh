@@ -1,7 +1,7 @@
 #!/bin/bash
 cd $(dirname $0)
 
-../public/docker-network.sh
+../public/docker-network.py
 
 docker rm -f gitea
 

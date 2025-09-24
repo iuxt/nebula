@@ -8,7 +8,7 @@ def check_docker_network_exists(network_name):
     try:
         # 执行docker network ls命令并过滤指定网络
         result = subprocess.run(
-            f"docker network ls --filter name=^{network_name}$ --format '{{.Name}}'",
+            f"docker network ls --filter name=^{network_name}$ --format '{{{{.Name}}}}'",
             shell=True,
             check=True,
             capture_output=True,

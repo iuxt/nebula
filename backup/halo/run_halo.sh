@@ -3,7 +3,7 @@ cd $(dirname $0)
 
 set -euo pipefail
 
-../public/docker-network.sh
+../public/docker-network.py
 
 docker run -it -d --name halo \
   -v "$PWD"/halo_data:/root/.halo \
