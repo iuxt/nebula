@@ -7,4 +7,4 @@ echo $APP_NAME
 
 docker rm -f $APP_NAME
 
-../public/remove_config_from_nginx.sh
+../public/remove_config_from_nginx.py

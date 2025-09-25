@@ -4,16 +4,22 @@ import shutil
 import subprocess
 import sys
 
-def main():
-    # 当前目录名作为 app 名称
-    app = os.path.basename(os.getcwd())
-    print(app)
 
-    # 路径
-    custom_conf = "custom_nginx.conf"
-    default_conf = "nginx.conf"
-    target_conf = os.path.join("..", "nginx", "conf.d", f"{app}.conf")
-    reload_script = os.path.join("..", "nginx", "reload.py")
+def get_app_name():
+    return 
+
+
+def copy_nginx_conf(app, conf_type):
+    if conf_type == "http":
+        custom_conf = "custom_nginx.conf"
+        default_conf = "nginx.conf"
+        target_conf = os.path.join("..", "nginx", "conf.d", f"{app}.conf")
+    elif conf_type == "stream":
+        custom_conf = "custom_nginx-stream.conf"
+        default_conf = "nginx-stream.conf"
+        target_conf = os.path.join("..", "nginx", "stream.d", f"{app}.conf")
+    else:
+        raise ValueError("Invalid conf_type. Must be 'http' or 'stream'.")
 
     # 如果 custom_nginx.conf 不存在，就复制 nginx.conf
     if not os.path.exists(custom_conf):
@@ -26,6 +32,9 @@ def main():
     shutil.copyfile(custom_conf, target_conf)
     print(f"Copied {custom_conf} → {target_conf}")
 
+
+def reload_nginx():
+    reload_script = os.path.join("..", "nginx", "reload.py")
     # 调用 reload.py
     if os.path.exists(reload_script):
         result = subprocess.run(
@@ -43,6 +52,20 @@ def main():
     else:
         print(f"Error: {reload_script} not found.")
         sys.exit(1)
+
+
+def main():
+    # 当前目录名作为 app 名称
+    app = os.path.basename(os.getcwd())
+    print(app)
+
+    if not os.path.exists(custom_conf):
+        
+
+    reload_nginx()
+
+
+
 
 if __name__ == "__main__":
     main()
