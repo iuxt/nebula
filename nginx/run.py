@@ -87,7 +87,7 @@ def get_docker_run_command() -> str:
         "--restart always "
         "--log-driver=json-file "
         "--log-opt max-size=1G "
-        "docker.io/nginx:1.27.0"
+        "docker.io/nginx:1.27.5"
     )
     return command
 
