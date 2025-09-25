@@ -6,5 +6,5 @@ docker rm -f wordpress
 
 rm -f ../nginx/conf.d/"$(basename "$(pwd)")".conf
 
-../nginx/reload.sh
+../nginx/reload.py
 

@@ -5,7 +5,7 @@ docker rm -f vaultwarden
 
 # 生效nginx规则
 rm -f ../nginx/conf.d/"$(basename "$(pwd)")".conf
-../nginx/reload.sh
+../nginx/reload.py
 
 
 # fail2ban规则

@@ -5,5 +5,5 @@ cd $(dirname $0)
 docker rm -f xray
 
 rm -f ../nginx/conf.d/$(basename "$(pwd)").conf
-../nginx/reload.sh
+../nginx/reload.py
 
