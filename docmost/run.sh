@@ -8,10 +8,7 @@ docker run -d --name docmost \
     --network iuxt \
     --restart unless-stopped \
     -v ./data:/app/data/storage \
-    -e DATABASE_URL=postgresql://iuxt:vzVqG9ijCcco@postgres:5432/docmost?schema=public \
-    -e REDIS_URL=redis://redis:6379 \
-    -e APP_URL=https://doc.babudiu.com \
-    -e APP_SECRET=6BrF0U3RR3G0DTfmXB92BZ6gHUhTnM4LFKHjCpbz \
+	--env-file=.env \
     docmost/docmost:0.23.2
 
 
