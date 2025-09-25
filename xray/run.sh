@@ -13,4 +13,4 @@ docker run -d --name xray \
   --mount type=bind,source=/etc/localtime,target=/etc/localtime,readonly \
   docker.io/iuxt/xray:v25.3.6
 
-../public/add_config_to_nginx.sh
+../public/add_config_to_nginx.py

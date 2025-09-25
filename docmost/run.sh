@@ -15,4 +15,4 @@ docker run -d --name docmost \
     docmost/docmost:0.23.2
 
 
-../public/add_config_to_nginx.sh
+../public/add_config_to_nginx.py

@@ -11,7 +11,7 @@ docker run -d --name outline \
 	--network iuxt \
 	docker.getoutline.com/outlinewiki/outline:latest
 
-../public/add_config_to_nginx.sh
+../public/add_config_to_nginx.py
 
 docker logs -f outline
 

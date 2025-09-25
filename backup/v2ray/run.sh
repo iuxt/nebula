@@ -11,4 +11,4 @@ docker run -d --name v2ray \
   --mount type=bind,source=/etc/localtime,target=/etc/localtime,readonly \
   docker.io/iuxt/v2ray:v5.29.3
 
-../public/add_config_to_nginx.sh
+../public/add_config_to_nginx.py

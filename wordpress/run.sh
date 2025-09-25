@@ -21,4 +21,4 @@ docker run -d --name wordpress \
   --restart always \
   docker.io/wordpress:"${WORDPRESS_VERSION}"
 
-../public/add_config_to_nginx.sh
+../public/add_config_to_nginx.py

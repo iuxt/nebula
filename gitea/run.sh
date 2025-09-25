@@ -23,4 +23,4 @@ docker run -d \
 
 cp -f ./gitea-nginx-stream.conf ../nginx/stream.d/gitea.conf
 ../nginx/run.sh
-../public/add_config_to_nginx.sh
+../public/add_config_to_nginx.py

@@ -11,4 +11,4 @@ docker run -it -d --name halo \
   --restart always \
   halohub/halo:1.6.1
 
-../public/add_config_to_nginx.sh
+../public/add_config_to_nginx.py

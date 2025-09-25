@@ -15,4 +15,4 @@ docker run --name xtemp -d \
 	iuxt/xtemp:latest
 
 
-../public/add_config_to_nginx.sh
+../public/add_config_to_nginx.py
