@@ -77,7 +77,7 @@ def main():
 
     if os.path.exists("nginx.conf"):
         copy_nginx_conf(app, "http")
-        restart_nginx()
+        reload_nginx()
     if os.path.exists("nginx-stream.conf"):
         copy_nginx_conf(app, "stream")
         restart_nginx()
