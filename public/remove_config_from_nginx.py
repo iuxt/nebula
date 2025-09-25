@@ -35,5 +35,6 @@ def main():
         print(f"Error: {reload_script} not found.")
         sys.exit(1)
 
+
 if __name__ == "__main__":
     main()

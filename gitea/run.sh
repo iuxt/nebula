@@ -21,6 +21,6 @@ docker run -d \
     --restart=always \
     docker.io/gitea/gitea:${GITEA_VERSION}
 
-cp -f ./gitea-nginx-stream.conf ../nginx/stream.d/gitea.conf
+cp -f ./nginx-stream.conf ../nginx/stream.d/gitea.conf
 ../nginx/run.sh
 ../public/add_config_to_nginx.py
