@@ -1,6 +1,5 @@
 .env
-mysql_data/
-wordpress_data/
+data/
 extensions/
 php_custom.ini
 

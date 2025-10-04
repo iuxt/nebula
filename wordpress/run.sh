@@ -10,10 +10,10 @@ if [ ! -e ./php_custom.ini ];then
 fi
 
 docker rm -f wordpress
-chown -R www-data:www-data ./wordpress_data
+chown -R www-data:www-data ./data
 
 docker run -d --name wordpress \
-  -v ./wordpress_data:/var/www/html \
+  -v ./data:/var/www/html \
   -v ./extensions:/extensions \
   --mount type=bind,source=./php_custom.ini,target=/usr/local/etc/php/conf.d/php_custom.ini \
   --env-file=.env \
