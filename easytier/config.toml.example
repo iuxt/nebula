@@ -1,4 +1,4 @@
-hostname = "guanyu"
+hostname = "test"
 instance_name = "iuxt"
 instance_id = "5057fea1-b2be-47b0-9e42-5c2cf36d3f82"
 ipv4 = "10.233.233.1/24"
