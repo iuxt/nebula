@@ -1,0 +1,7 @@
+cluster.name: "cluster01"
+network.host: 0.0.0.0
+
+xpack.security.enabled: true
+
+http.cors.enabled: true
+http.cors.allow-origin: "*"
