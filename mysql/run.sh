@@ -16,5 +16,5 @@ docker run -d --name mysql \
        -p "${MYSQL_PORT}":3306 \
        -p "${MYSQLX_PORT}":33060 \
        --network iuxt \
-       --restart "${RESTART}" \
+       --restart on-failure:3 \
        docker.io/mysql:"${MYSQL_VERSION}"
