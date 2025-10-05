@@ -2,7 +2,7 @@
 proxies:
   - name: "vless"
     type: vless
-    server: aria2.babudiu.com
+    server: aria2.example.com
     port: 443
     uuid: "32113611-56d2-4899-82d9-d7804587abf5"
     udp: true

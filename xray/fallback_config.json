@@ -30,8 +30,8 @@
                     ],
                     "certificates": [
                         {
-                            "certificateFile": "/root/nebula/nginx/ssl/babudiu.com.crt",
-                            "keyFile": "/root/nebula/nginx/ssl/babudiu.com.key"
+                            "certificateFile": "/root/nebula/nginx/ssl/example.com.crt",
+                            "keyFile": "/root/nebula/nginx/ssl/example.com.key"
                         }
                     ]
                 }

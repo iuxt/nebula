@@ -63,7 +63,7 @@ class DnsPodApi:
 if __name__ == "__main__":
     id = "345512"
     key = "example_key"
-    domain = "babudiu.com"
+    domain = "example.com"
     sub_domain = "t-box"
     value = "1.1.1.1"
     

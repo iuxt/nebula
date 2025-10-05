@@ -10,4 +10,4 @@ sub_domain = ditu
 [namesilo]
 key = 12345
 domain = baidu.com
-sub_domain = ds.babudiu.com
+sub_domain = ds.example.com
