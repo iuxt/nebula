@@ -47,6 +47,7 @@ nginx配置文件为：nginx.conf 启动时会检测是否有自定义的custom_
 | wordpress | 开源内容管理系统 | https://github.com/WordPress/WordPress |
 | xray | 网络扫描和安全评估工具 | https://github.com/chaitin/xray |
 | xtemp | 文件中转站，支持curl | https://xtemp.babudiu.com/ |
+| rustfs | 兼容S3协议的开源对象存储 | https://github.com/rustfs/rustfs |
 
 
 详细说明请进入对应的文件夹查看说明或查看对应项目的官方文档
