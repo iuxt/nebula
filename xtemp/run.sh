@@ -12,7 +12,7 @@ docker run --name xtemp -d \
 	-e MAX_UPLOAD_SIZE=2147483648 \
 	-v ./data:/data \
 	--restart always \
-	iuxt/xtemp:latest
+	iuxt/xtemp:20260126
 
 
 ../public/add_config_to_nginx.py

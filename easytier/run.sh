@@ -9,5 +9,5 @@ docker run --name easytier -d \
     --mount type=bind,source=./config.toml,target=/app/config.toml,readonly \
     --privileged \
     --restart=always \
-    easytier/easytier:v2.4.5 \
+    easytier/easytier:v2.5.0 \
     -c /app/config.toml
