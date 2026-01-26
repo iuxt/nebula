@@ -208,14 +208,20 @@ func commonUploadLogic(c *gin.Context, filename string, bodyReader io.Reader, is
     deleteCommand := fmt.Sprintf("curl -X DELETE '%s'", accessURL)
 
     logger.Printf("File %s (size %d bytes) uploaded successfully. Access URL: %s. Delete Command: %s", fullStoragePath, bytesWritten, accessURL, deleteCommand)
-    c.JSON(http.StatusCreated, gin.H{
-        "message":        "File uploaded successfully",
-        "id":             randomID,
-        "filepath":       sanitizedFilename,
-        "url":            accessURL,
-        "delete_command": deleteCommand,
-        "size":           bytesWritten,
-    })
+    c.Header("Content-Type", "text/plain; charset=utf-8")
+
+    c.String(http.StatusCreated,
+        "Upload success\n"+
+        "File: %s\n"+
+        "Size: %d bytes\n"+
+        "URL: %s\n"+
+        "Delete: %s\n",
+        sanitizedFilename,
+        bytesWritten,
+        accessURL,
+        deleteCommand,
+    )
+
 }
 
 func handleUploadPost(c *gin.Context) {
