@@ -33,7 +33,7 @@ def main():
         "--net=host",
         "--cap-add=NET_ADMIN",
         "--cap-add=NET_RAW",
-        "--mount type=bind,source=/etc/localtime,target=/etc/localtime,readonly "
+        "--mount type=bind,source=/etc/localtime,target=/etc/localtime,readonly ",
         "-e", "PUID=1000",
         "-e", "PGID=1000",
         "-e", "TZ=Etc/UTC",
