@@ -41,7 +41,6 @@ def main():
         "-v", "/var/log:/var/log:ro",
         "-v", "/root/logs:/root/logs:ro",
         "-v", "/var/lib/docker/containers:/var/lib/docker/containers:ro",
-        "-e", "TZ=Asia/Shanghai",
         "--restart", "unless-stopped",
         "linuxserver/fail2ban:1.1.0"
     ]
