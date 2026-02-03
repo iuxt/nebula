@@ -3,4 +3,6 @@
 *.pem
 *.csr
 *.p12
+*.conf
+*.cer
 

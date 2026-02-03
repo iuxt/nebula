@@ -54,6 +54,7 @@ maxretry = 3
 bantime = 1d
 ignoreip = 127.0.0.1/8 ::1
 mode   = aggressive
+action = iptables-multiport[port="%(port)s", protocol="tcp", chain="INPUT"]
 """
     
     try:
