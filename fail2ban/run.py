@@ -42,7 +42,7 @@ def main():
         "-v", "/root/logs:/root/logs:ro",
         "-v", "/var/lib/docker/containers:/var/lib/docker/containers:ro",
         "--restart", "unless-stopped",
-        "lscr.io/linuxserver/fail2ban:latest"
+        "linuxserver/fail2ban:1.1.0"
     ]
     
     if run_command(docker_run_command):
@@ -51,6 +51,7 @@ def main():
     else:
         print("fail2ban容器启动失败!")
         sys.exit(1)
+
 
 if __name__ == "__main__":
     main()
