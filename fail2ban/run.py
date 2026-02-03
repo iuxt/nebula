@@ -41,7 +41,7 @@ def main():
         "-v", "/var/log:/var/log:ro",
         "-v", "/root/logs:/root/logs:ro",
         "-v", "/var/lib/docker/containers:/var/lib/docker/containers:ro",
-        "--mount", "type=bind,source=/etc/localtime,target=/etc/localtime,readonly",
+        "-e", "TZ=Asia/Shanghai",
         "--restart", "unless-stopped",
         "linuxserver/fail2ban:1.1.0"
     ]
