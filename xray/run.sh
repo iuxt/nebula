@@ -5,7 +5,7 @@ cd $(dirname $0)
 ../public/docker-network.py
 
 if [ ! -f config.json ]; then
-  cp xray_config_example/config.json config.json
+  cp xray_config_example/ws_config.json config.json
 fi
 
 docker rm -f xray

@@ -1,0 +1,64 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "dns": {},
+  "stats": {},
+  "inbounds": [
+    {
+      "port": 2333,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "<UUID 使用 xray uuid 生成>",
+            "level": 0
+          }
+        ],
+        "decryption": "none"
+      },
+      "tag": "in-0",
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/自定义一个path"
+        }
+      }
+    }
+  ],
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "blocked"
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "inboundTag": [
+          "in-0"
+        ]
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ],
+  "policy": {},
+  "reverse": {},
+  "transport": {}
+}
