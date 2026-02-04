@@ -9,7 +9,7 @@
             "settings": {
                 "clients": [
                     {
-                        "id": "2ebb5198-f3ca-4105-bb91-2b72cca93abc",
+                        "id": "<UUID 使用 xray uuid 生成>",
                         "level": 0,
                         "email": "love@example.com"
                     }

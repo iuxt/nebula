@@ -4,13 +4,13 @@ proxies:
     type: vless
     server: xray.example.com
     port: 443
-    uuid: "32113611-56d2-4899-82d9-d7804587abf5"
+    uuid: "<UUID 使用 xray uuid 生成>"
     udp: true
     tls: true
     skip-cert-verify: false
     network: ws
     ws-opts:
-      path: "/8fcd8326e3aa"
+      path: "/自定义一个path"
 
 proxy-groups:
   - name: "PROXY"
